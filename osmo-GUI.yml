@@ -10,7 +10,8 @@
       {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
     with_items:
       - nodejs
-  
+      - alsa-oss
+
   - name: npm
     shell: cd /root && rm -rf /root/npm && git clone https://github.com/npm/npm && cd npm && make install
 
