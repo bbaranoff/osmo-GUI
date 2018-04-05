@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <title>GSM Panel</title>
+
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:13px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:13px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+.tg .tg-c7d0{background-color:#bbdaff;text-align:center}
+.tg .tg-ci37{background-color:#ecf4ff;text-align:center}
+</style>
+
+
+<table class="tg">
+  <tr>
+    <th class="tg-031e" colspan="3" >TURN ON TRX<br>
+      <form id="TRX">
+      <input type="radio" name="TRX" value="Off" checked>Off<br>
+      <input type="radio" name="TRX" value="On">On<br>
+      <INPUT TYPE="submit" VALUE="Submit"/></th>
+      </form>
+    </th>
+  </tr>
+
+  <tr>
+    <td class="tg-c7d0" colspan="3">TURN ON BTS<br>
+      <form  id ="BTS">
+      <input type="radio" name="BTS" value="Off" checked>Off<br>
+      <input type="radio" name="BTS" value="On">On<br>
+      <INPUT TYPE="submit" VALUE="Submit"/></th>
+      </th>
+      </form>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="tg-ci37" colspan="3">Turn on BSC<br>
+ <form  id ="BSC">
+      <input type="radio" name="BSC" value="Off" checked>Off<br>
+      <input type="radio" name="BSC" value="On">On<br>
+      <INPUT TYPE=SUBMIT VALUE="submit"/></th>
+      </th>
+      </form>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="tg-031e">Mesage Users</td>
+    <td class="tg-031e"><ul id="messages"></ul> </td>
+    <td class="tg-031e"><form id="me" > <input id="m" autocomplete="off" /> 
+      <button>Send GSM Message to All</button>
+      </form></td>
+  </tr>
+
+
+  <tr>
+    <td class="tg-031e"></td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e"></td>
+  </tr>
+</table>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<script>
+
+
+//Send Message
+  var socket = io();
+
+  var Msocket = io(me);
+  $('#me').submit(function(){
+    socket.emit('Cmessage', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+socket.on('Cmessage', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+
+
+//Turn on TRX
+  var TRXsocket = io(TRX);
+  $('#TRX').submit(function(){
+    socket.emit('TurnOnTRX', $('#TRX').val());
+    $('#TRX').val('');
+    return false;
+  });
+socket.on('TurnOnTRX', function(){
+    $('#TRX').append($('<li>').text(msg));
+  });
+
+
+//Turn on BTS
+  var BTSsocket = io(BTS);
+
+  $('#BTS').submit(function(){
+    socket.emit('TurnOnBTS', $('#BTS').val());
+    $('#BTS').val('');  
+   return false;
+ });
+socket.on('TurnOnBTS', function(){
+  $('#BTS').append($('<li>').text(msg));
+  });
+
+
+
+//Turn on BSC
+  var BSCsocket = io(BSC);
+  $('#BSC').submit(function(){
+    socket.emit('TurnOnBSC', $('#BSC').val());
+    $('#BSC').val('');
+    return false;
+  });
+socket.on('TurnOnBSC', function(){
+   $('#BSC').append($('<li>').text(msg));
+  });
+
+
+</script>
+  </body>
+</html>
