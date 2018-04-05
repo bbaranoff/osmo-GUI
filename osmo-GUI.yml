@@ -19,6 +19,6 @@
     shell: cd /root && rm -rf /root/osmo-GUI && git clone https://github.com/osmo-GUI
 
   - name: intall jquery and socket.io
-    shell: cd osmo-GUI && npm install --save jquery socket.io
+    shell: cd /root/osmo-GUI && npm install --save jquery socket.io
 
 

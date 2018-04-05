@@ -17,11 +17,17 @@ Running :
 
 cd /root/osmo-GUI
 
+./begin.sh 
+
 ./osmoUSB0.sh
 
 ./osmoUSB1.sh
 
 node index.js
+
+lcr start
+
+asterisk && asterisk -rvvvv
 
 In browser goto localhost:3000
 
