@@ -15,9 +15,6 @@
   - name: npm
     shell: cd /root && rm -rf /root/npm && git clone https://github.com/npm/npm && cd npm && make install
 
-  - name: osmo-GUI
-    shell: cd /root && rm -rf /root/osmo-GUI && git clone https://github.com/osmo-GUI
-
   - name: intall jquery and socket.io
     shell: cd /root/osmo-GUI && npm install --save jquery socket.io
 
