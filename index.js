@@ -1,3 +1,4 @@
+
 //run socket.io
 var app = require('express')();
 var http = require('http').Server(app);
@@ -22,6 +23,14 @@ io.on('connection', function(socket){
     exec("./helloworld.sh", puts);
   });
 
+//TRX
+    socket.on('TurnOnTRX', function(msg){
+    io.emit('TurnOnTRX', msg);
+    console.log('TRX: ON');
+//TRX shell script
+        function puts(error, stdout, stderr) {sys.puts(stdout)}
+    exec("./TurnOnTRX.sh", puts);
+  });
 
 //TRX
     socket.on('TurnOnTRX', function(msg){
@@ -51,6 +60,24 @@ io.on('connection', function(socket){
 //BSC shell script
   function puts(error, stdout, stderr) {sys.puts(stdout)}
     exec("./TurnOnBSC.sh", puts);
+  }); 
+});
+//USB0
+    socket.on('TurnOnUSB0', function(msg){
+    io.emit('TurnOnUSB0', msg);
+    console.log('USB0: ON');
+//USB0 shell script
+  function puts(error, stdout, stderr) {sys.puts(stdout)}
+    exec("./osmoUSB0.sh", puts);
+  }); 
+});
+//USB1
+    socket.on('TurnOnUSB1', function(msg){
+    io.emit('TurnOnUSB1', msg);
+    console.log('USB1: ON');
+//USB0 shell script
+  function puts(error, stdout, stderr) {sys.puts(stdout)}
+    exec("./osmoUSB1.sh", puts);
   }); 
 });
 

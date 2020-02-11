@@ -14,6 +14,27 @@
 
 <table class="tg">
   <tr>
+    <td class="tg-ci37" colspan="3">USB0<br>
+ <form  id ="USB0">
+      <input type="radio" name="USB0" value="Off" checked>Off<br>
+      <input type="radio" name="USB0" value="On">On<br>
+      <INPUT TYPE=SUBMIT VALUE="submit"/></th>
+      </th>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td class="tg-ci37" colspan="3">USB1<br>
+ <form  id ="USB1">
+      <input type="radio" name="USB1" value="Off" checked>Off<br>
+      <input type="radio" name="USB1" value="On">On<br>
+      <INPUT TYPE=SUBMIT VALUE="submit"/></th>
+      </th>
+      </form>
+    </td>
+  </tr>
+
+  <tr>
     <th class="tg-031e" colspan="3" >TURN ON TRX<br>
       <form id="TRX">
       <input type="radio" name="TRX" value="Off" checked>Off<br>
@@ -33,18 +54,6 @@
       </form>
     </td>
   </tr>
-
-  <tr>
-    <td class="tg-ci37" colspan="3">Turn on BSC<br>
- <form  id ="BSC">
-      <input type="radio" name="BSC" value="Off" checked>Off<br>
-      <input type="radio" name="BSC" value="On">On<br>
-      <INPUT TYPE=SUBMIT VALUE="submit"/></th>
-      </th>
-      </form>
-    </td>
-  </tr>
-
   <tr>
     <td class="tg-031e">Mesage Users</td>
     <td class="tg-031e"><ul id="messages"></ul> </td>
@@ -117,6 +126,27 @@ socket.on('TurnOnBTS', function(){
     return false;
   });
 socket.on('TurnOnBSC', function(){
+   $('#BSC').append($('<li>').text(msg));
+  });
+
+//Turn on USB0
+  var USB0socket = io(USB0);
+  $('#USB0').submit(function(){
+    socket.emit('TurnOnUSB0', $('#USB0').val());
+    $('#USB0').val('');
+    return false;
+  });
+socket.on('TurnOnUSB0', function(){
+   $('#BSC').append($('<li>').text(msg));
+  });
+//Turn on USB1
+  var USB1socket = io(USB1);
+  $('#USB1').submit(function(){
+    socket.emit('TurnOnUSB1', $('#USB0').val());
+    $('#USB1').val('');
+    return false;
+  });
+socket.on('TurnOnUSB0', function(){
    $('#BSC').append($('<li>').text(msg));
   });
 
