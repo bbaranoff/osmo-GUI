@@ -77,7 +77,7 @@ io.on('connection', function(socket){
   function puts(error, stdout, stderr) {sys.puts(stdout)}
     exec("./osmoUSB1.sh", puts);
   }); 
-
+});
 
 http.listen(3000, function(){
   console.log('listening on *:3000');
