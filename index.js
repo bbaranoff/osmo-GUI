@@ -4,7 +4,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 //run shell script
-var sys = require('util')
+var sys = require('util');
 var exec = require('child_process').exec;
 
 app.get('/', function(req, res,next) {  
