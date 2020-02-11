@@ -61,7 +61,6 @@ io.on('connection', function(socket){
   function puts(error, stdout, stderr) {sys.puts(stdout)}
     exec("./TurnOnBSC.sh", puts);
   }); 
-});
 //USB0
     socket.on('TurnOnUSB0', function(msg){
     io.emit('TurnOnUSB0', msg);
@@ -69,8 +68,7 @@ io.on('connection', function(socket){
 //USB0 shell script
   function puts(error, stdout, stderr) {sys.puts(stdout)}
     exec("./osmoUSB0.sh", puts);
-  }); 
-});
+  });
 //USB1
     socket.on('TurnOnUSB1', function(msg){
     io.emit('TurnOnUSB1', msg);
@@ -79,7 +77,6 @@ io.on('connection', function(socket){
   function puts(error, stdout, stderr) {sys.puts(stdout)}
     exec("./osmoUSB1.sh", puts);
   }); 
-});
 
 
 http.listen(3000, function(){
