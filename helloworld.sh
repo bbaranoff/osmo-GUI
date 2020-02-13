@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
 set -e
-killall node
-clear
+set -x
+byobu new-session -s root -d
+

@@ -2,9 +2,5 @@
 set -x
 set -e
 
-byobu list-sessions | grep BTS || byobu new-session -d -s BTS
-
-byobu list-windows -t BTS | grep start-script || byobu new-window -t BTS -n 'start-script'
-
-byobu send-keys -t BTS:start-script "cd /root/osmo-GUI && ./TurnOnBTS.sh" C-m
-
+byobu new-window -t root:4 -n 'BTS'
+byobu send-keys -t BTS "cd /root/osmo-GUI && ./TurnOnBTS.sh" C-m

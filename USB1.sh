@@ -1,9 +1,6 @@
 #!/bin/bash
 set -x
 set -e
-byobu list-sessions | grep USB1 || byobu new-session -d -s USB1
 
-byobu list-windows -t USB1 | grep start-script || byobu new-window -t USB1 -n 'start-script'
-
-byobu send-keys -t USB1:start-script "cd /root/osmo-GUI && ./osmoUSB1.sh" C-m
-
+byobu new-window -t root:1 -n 'USB1'
+byobu send-keys -t USB1 "cd /root/osmo-GUI && ./osmoUSB0.sh" C-m
