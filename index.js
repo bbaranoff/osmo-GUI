@@ -20,11 +20,8 @@ io.on('connection', function(socket){
     console.log('message: ' + msg);
 //Mesage shell script
 	function puts(error, stdout, stderr) {console.log(stdout)}
-<<<<<<< HEAD
     shell.exec("/root/osmo-GUI/helloworld.sh", puts);
-=======
     exec("./helloworld.sh", puts);
->>>>>>> a2c5b3f45748b8c280ce73823f3ac7aa08b41b02
   });
 
 //TRX
